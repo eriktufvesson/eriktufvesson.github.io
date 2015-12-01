@@ -1,0 +1,7 @@
+<ion-navbar *navbar primary>
+  <ion-title>Funny Cats</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+  <div *ng-for="#cat of cats" (click)="viewCat(cat)" class="square" [ng-style]="{'background-image': 'url(' + cat.url + ')'}"></div>
+</ion-content>

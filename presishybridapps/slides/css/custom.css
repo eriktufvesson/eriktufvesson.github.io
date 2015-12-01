@@ -1,0 +1,106 @@
+body {
+    background-color: #444;
+    background-image: url(../img/presis_bg_2.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.reveal .slides section .fragment.highlight-current-blue.current-fragment {
+    color: #F56E0F;
+}
+
+.reveal h1.orange,
+.reveal h2.orange,
+.reveal h3.orange,
+.reveal h4.orange {
+    color: #F3A302;
+    /*#F56E0F;*/
+}
+
+
+.reveal ul li {
+    font-family: Montserrat, Impact, sans-serif;
+    padding: 10px 0;
+}
+
+.reveal .small {
+    font-size: 65%;
+}
+
+.reveal img {
+  max-height: 500px;
+}
+
+
+.col {
+  float: left;
+  width: 50%;
+}
+.col.preview {
+  width: 35%;;
+}
+.col.code {
+  width: 65%;
+  text-align: left;
+}
+.col.code > * {
+  margin-left: 40px;
+}
+
+.reveal .stack {
+  background: #2F63B8;
+  padding: 5px;
+  margin: 10px auto;
+  width: 60%;
+  color: white;
+  opacity: .7;
+}
+
+.reveal pre {
+  background: #222 !important;
+}
+
+.reveal code {
+  font-size: 18px;
+  background: #222 !important;
+}
+
+.reveal .demo-frame {
+  background: url('http://ionicframework.com/present-ionic/slides/img/demo-bg.png') no-repeat;
+  background-size: 340px;
+  height: 820px;
+  margin-top: -20px;
+  margin-left: -15px;
+  min-width: 345px;
+}
+
+.reveal .demo-frame img {
+  position: absolute;
+  left: 13px;
+  top: 104px;
+  width: 287px;
+  height: 509px;
+  margin: 0;
+  border: 0;
+}
+
+
+.reveal .demo-frame iframe {
+  position: absolute;
+  left: 13px;
+  top: 104px;
+  width: 287px;
+  height: 509px
+}
+
+.reveal section img.logo {
+  margin-bottom: 50px;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.links li {
+  font-size: 65%;
+  padding: 3px 0 !important;
+}
