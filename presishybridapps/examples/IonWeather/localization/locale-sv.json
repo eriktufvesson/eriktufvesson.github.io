@@ -1,0 +1,33 @@
+{
+  "START": {
+    "TAG_LINE": "Kommer med solsken till dig!",
+    "WEATHER_FOR": "Prognos för",
+    "FORECAST_FOR": "Prognos för kl",
+    "GET_5DAY": "5-dygnsprognos",
+    "GET_WEATHER_FOR_LOCATION": "Hämta prognos för en annan ort",
+    "GETTING_FORCAST_FOR": "Hämtar prognosen för",
+    "GETTING_5DAY_FORECAST": "Hämtar prognosen",
+    "5DAY_FORECAST_FOR": "5-dygnsprognos för"
+  },
+  "WEATHER": {
+    "RAIN": "Regn",
+    "HUMIDITY": "Luftfuktighet",
+    "N": "N",
+    "NE": "NÖ",
+    "E": "Ö",
+    "SE": "SÖ",
+    "S": "S",
+    "SW": "SV",
+    "W": "V",
+    "NW": "NV"
+  },
+  "LOCATION": {
+    "SELECT_LOCATION": "Välj ort eller sök",
+    "SEARCH_PLACEHOLDER": "Skriv in ort..."
+  },
+  "COMMON": {
+    "APP_NAME": "VÄDR",
+    "TODAY": "idag",
+    "CLOSE": "Stäng"
+  }
+}

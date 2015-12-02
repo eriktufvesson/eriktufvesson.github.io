@@ -1,0 +1,28 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">{{ 'START.5DAY_FORECAST_FOR' | translate }} {{location.name}}</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <div class="item item-avatar" ng-repeat="day in fivedayForecast">
+          <i class="icon icon-avatar" ng-class="day.icon"></i>
+          <div class="row">
+            <div class="col-50">
+              <h2>{{day.from | date: 'EEEE d/M'}}</h2>
+              <p>{{day.temperature}}</p>
+            </div>
+            <div class="col-50 text-right">
+              <p>
+                <i class="icon ion-compass"></i> {{ 'WEATHER.' + day.windDirection.name | translate }} {{day.windSpeed.mps}}
+                m/s<br />
+                {{ 'WEATHER.RAIN' | translate }}: {{day.rain}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="closeModal(fivedaymodal)">{{ 'COMMON.CLOSE' | translate }}</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>

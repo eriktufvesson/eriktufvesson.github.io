@@ -1,0 +1,33 @@
+{
+  "START": {
+    "TAG_LINE": "Brings you nice weather!",
+    "WEATHER_FOR": "Weather for",
+    "FORECAST_FOR": "Forecast for",
+    "GET_5DAY": "Get 5 day forecast",
+    "GET_WEATHER_FOR_LOCATION": "Get weather for another location",
+    "GETTING_FORCAST_FOR": "Getting the forecast for",
+    "GETTING_5DAY_FORECAST": "Getting the forecast for you sir!",
+    "5DAY_FORECAST_FOR": "5 day forecast for"
+  },
+  "WEATHER": {
+    "RAIN": "Rain",
+    "HUMIDITY": "Humidity",
+    "N": "N",
+    "NE": "NE",
+    "E": "E",
+    "SE": "SE",
+    "S": "S",
+    "SW": "SW",
+    "W": "W",
+    "NW": "NW"
+  },
+  "LOCATION": {
+    "SELECT_LOCATION": "Select location or search",
+    "SEARCH_PLACEHOLDER": "Enter location..."
+  },
+  "COMMON": {
+    "APP_NAME": "WTHR",
+    "TODAY": "today",
+    "CLOSE": "Close"
+  }
+}

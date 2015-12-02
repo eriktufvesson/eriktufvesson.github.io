@@ -1,0 +1,51 @@
+<ion-view class="start-view" cache-view="false" hide-nav-bar="true">
+  <ion-content scroll="false">
+    <div class="top-content row">
+      <div class="app-copy col col-top">
+        <h1 class="app-logo">{{ 'COMMON.APP_NAME' | translate }}</h1>
+        <p class="app-tagline">
+          {{ 'START.TAG_LINE' | translate }}
+        </p>
+      </div>
+    </div>
+    <div class="middle-content row">
+      <div class="weather-info col col-bottom card" ng-show="forecast && location">
+        <div class="item item-divider">
+          {{ 'START.WEATHER_FOR' | translate }} {{location.name}}
+        </div>
+        <div class="item item-avatar">
+          <a ng-click="openForecastPopover($event)">
+            <i class="icon icon-avatar dark" ng-class="forecast.icon"></i>
+          </a>
+          <h2>
+            <i class="icon ion-thermometer"></i>
+            {{forecast.temperature}}</h2>
+          <p>
+            <i class="icon ion-compass"></i> {{ 'WEATHER.' + forecast.windDirection.name | translate }} {{forecast.windSpeed.mps}} m/s <span ng-show="forecast.windGust.mps">({{forecast.windGust.mps}} m/s)</span>            
+          </p>
+        </div>
+        <div class="item item-narrow text-small">
+          <div class="row">
+            <div class="col-50">
+              {{ 'WEATHER.RAIN' | translate }}: {{forecast.rain}}
+            </div>
+            <div class="col-50">{{ 'WEATHER.HUMIDITY' | translate }}: {{forecast.humidity}}</div>
+          </div>
+        </div>
+        <div class="item item-narrow item-text-right text-xs">
+          {{ 'START.FORECAST_FOR' | translate }} {{forecast.from | date: 'HH:mm'}} - {{forecast.to | date: 'HH:mm'}} {{ 'COMMON.TODAY' | translate }}
+        </div>
+        <div class="item item-narrow text-center">
+          <button class="button button-positive" ng-click="getFiveDayForecast(forecast.pos)">{{ 'START.GET_5DAY' | translate }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-content row">
+      <div class="col col-bottom">
+        <a class="facebook-sign-in button button-block icon-left ion-earth" ng-click="selectLocation()">
+          {{ 'START.GET_WEATHER_FOR_LOCATION' | translate }}
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
