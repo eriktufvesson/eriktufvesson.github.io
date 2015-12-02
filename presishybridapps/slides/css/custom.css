@@ -1,6 +1,6 @@
 body {
     background-color: #444;
-    background-image: url(../img/presis_bg_2.png);
+    background-image: url(../img/Presis_bg_2.png);
     background-repeat: no-repeat;
     background-position: top right;
 }
@@ -103,4 +103,22 @@ body {
 .links li {
   font-size: 65%;
   padding: 3px 0 !important;
+}
+
+.demo.android {
+  width: 460px;
+}
+
+.demo.android iframe {
+  width: 320px;
+  height: 560px;
+}
+
+.demo.ios {
+  width: 460px;
+}
+
+.demo.ios iframe {
+  width: 320px;
+  height: 560px;
 }
