@@ -122,3 +122,19 @@ body {
   width: 320px;
   height: 560px;
 }
+
+.react-demo {
+  margin: 0 auto !important;
+  width: 450px;
+  height: 9999px;
+}
+.react-demo iframe {
+  width: 450px;
+  height: 9999px;
+}
+
+.center {
+      display: block;
+    margin: 0 auto !important;
+    width: 900px;
+}
