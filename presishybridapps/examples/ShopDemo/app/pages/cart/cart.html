@@ -1,0 +1,46 @@
+<ion-navbar *navbar accent>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Shopping cart</ion-title>
+</ion-navbar>
+
+<ion-content padding class="cart">
+  <ion-list>
+    <ion-item *ngFor="#product of cartItems">
+      <ion-avatar item-left>
+        <img [src]="product.imageUrl">
+      </ion-avatar>
+      <h2 (click)="navProduct(product)">{{product.name}}</h2>
+      <p *ngIf="product.sale">
+        <span class="sale-price">{{product.price | currency:'USD':true}}</span>
+        <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+      </p>
+      <p *ngIf="!product.sale">
+        <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+      </p>
+      <button clear item-right accent (click)="remove(product)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item *ngIf="cartItems.length" style="text-align: center">
+      Total: <b>{{calcTotal() | currency:'USD':true}}</b>
+    </ion-item>
+  </ion-list>
+  <ion-card *ngIf="!cartItems.length">
+    <ion-card-header>
+      Cart is empty
+    </ion-card-header>
+  </ion-card>
+  <div *ngIf="cartItems.length">
+    <button full accent (click)="navCheckout()">
+      <ion-icon name="card"></ion-icon>
+      Continue to Checkout
+    </button>
+    <button full clear (click)="clearCart()">
+      <ion-icon name="trash"></ion-icon>
+      Clear cart
+    </button>
+  </div>
+
+</ion-content>

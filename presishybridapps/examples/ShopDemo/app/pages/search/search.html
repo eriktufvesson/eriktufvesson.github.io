@@ -1,0 +1,16 @@
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-buttons end>
+    <navbar-buttons (cartClick)="navCart()" [showSearchIcon]="false"></navbar-buttons>
+  </ion-buttons>
+  <ion-title>Search</ion-title>
+</ion-navbar>
+
+<ion-content class="search">
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="search($event)"></ion-searchbar>
+  <ion-list>
+    <product-list-item *ngFor="#product of searchResults" [product]="product"></product-list-item>
+  </ion-list>
+</ion-content>

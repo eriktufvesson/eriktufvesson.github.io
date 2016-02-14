@@ -1,0 +1,48 @@
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-buttons end>
+    <navbar-buttons (cartClick)="navCart()" [showSearchIcon]="false"></navbar-buttons>
+  </ion-buttons>
+  <ion-title>{{product.name}}</ion-title>
+</ion-navbar>
+
+<ion-content class="product">
+  <ion-card>
+    <img [src]="product.imageUrl" alt="{{product.name}}">
+    <ion-card-content>
+      <h1>
+        {{product.name}}
+      </h1>
+      <h3>
+        {{product.description}}
+      </h3>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="card" primary></ion-icon>
+          <span *ngIf="product.sale">
+            <span class="sale-price">{{product.price | currency:'USD':true}}</span>
+            <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+          </span>
+          <span *ngIf="!product.sale">
+            <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+          </span>
+        </ion-item>
+        <ion-item *ngIf="product.stock > 0">
+          <ion-icon name="checkmark" success></ion-icon>
+          {{product.stock}} in stock
+        </ion-item>
+        <ion-item *ngIf="product.stock <= 0">
+          <ion-icon name="close" accent></ion-icon>
+          Out of stock
+          <ion-note item-right>Expected: 2016-03-01</ion-note>
+        </ion-item>
+      </ion-list>
+      <button full primary (click)="addToCart(product)" [disabled]="product.stock <= 0">
+        <ion-icon name="cart"></ion-icon>
+        Add to cart
+      </button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

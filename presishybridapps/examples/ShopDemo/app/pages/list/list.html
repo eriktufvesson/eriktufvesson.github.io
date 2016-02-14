@@ -1,0 +1,15 @@
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>  
+  <ion-buttons end>
+    <navbar-buttons (cartClick)="navCart()" (searchClick)="navSearch()"></navbar-buttons>
+  </ion-buttons>  
+  <ion-title>Sale!</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <product-list-item *ngFor="#product of products | filter:'sale':true" [product]="product"></product-list-item>
+  </ion-list>
+</ion-content>

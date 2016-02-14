@@ -1,0 +1,18 @@
+<ion-navbar *navbar primary>
+
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-buttons end>
+    <button (click)="navSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+    <button (click)="navCart()">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge *ngIf="products.length" class="cart-badge">{{products.length}}</ion-badge>
+    </button>
+  </ion-buttons>
+
+  <ion-title>{{title}}</ion-title>
+
+</ion-navbar>

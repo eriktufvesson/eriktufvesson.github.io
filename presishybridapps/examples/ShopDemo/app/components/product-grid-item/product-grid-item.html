@@ -1,0 +1,22 @@
+<ion-card class="col-50" (click)="navProduct(product)">
+  <div class="ribbon" *ngIf="product.sale">
+    <ion-icon name="pricetags"></ion-icon>
+    <span>{{getDiscount(product)}}%</span>
+  </div>
+  <img [src]="product.imageUrl" alt="{{product.name}}">
+  <ion-card-content>
+    <p class="product-name">
+      {{product.name}}
+    </p>
+    <p class="product-description">
+      <span *ngIf="product.sale">
+        <span class="sale-price">{{product.price | currency:'USD':true}}</span>
+        <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+      </span>
+      <span *ngIf="!product.sale">
+        <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+      </span>
+      <span>- {{product.description}}</span>
+    </p>
+  </ion-card-content>
+</ion-card>

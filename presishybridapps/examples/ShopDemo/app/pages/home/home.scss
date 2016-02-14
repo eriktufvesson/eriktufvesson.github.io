@@ -1,0 +1,110 @@
+.home {
+  
+  background-color: map-get($colors, lightprimary);
+  
+  // ion-card {
+  //   margin: 0;
+  // }
+}
+
+.col-50 {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+.product-description {
+    color: map-get($colors, secondarytext);
+    font-size: 12px;
+    margin: 2px 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.shop-section-title {
+    background-color: transparent;
+    // border: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    border-top: 1px solid map-get($colors, primary);
+    background-color: lighten(map-get($colors, primary), 10);
+    
+}
+
+.shop-section-title .title-copy {
+    color: map-get($colors, text);
+    height: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: map-get($colors, accent);
+  font-size: 1rem;
+  padding: 3px 5px;
+}
+
+.sale-price {
+  color: map-get($colors, accent);
+  font-weight: bold;
+}
+
+.original-price {
+  color: map-get($colors, secondarytext);
+  text-decoration: line-through;
+  font-size: 1.2rem;
+}
+
+.normal-price {
+  color: map-get($colors, primarytext);
+}
+
+product-grid-item {
+    ion-card {
+        position: relative;
+    }
+}
+
+.ribbon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: map-get($colors, accent);
+  color: map-get($colors, text);
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 1.7rem;
+}
+
+ion-menu {
+  
+  background-image: url('../../img/menu-bg2.jpg');
+  background-size: cover;
+  
+  ion-toolbar {
+    .toolbar-background {
+      background: transparent !important;
+      border: 0 !important;
+    }
+  }
+  
+  ion-content {
+    background-color: transparent;
+    color: map-get($colors, text);
+    
+    button.item {
+      background-color: transparent;
+      color: map-get($colors, text);
+      border: 0 !important;
+      
+      .item-inner {
+        border: 0 !important;
+      }
+    }
+  }
+}

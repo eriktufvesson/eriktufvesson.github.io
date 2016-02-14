@@ -1,0 +1,38 @@
+<ion-toolbar accent>
+  <ion-title>Add to cart</ion-title>
+  <ion-buttons end>
+    <button (click)="cancel()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="card" primary></ion-icon>
+      <span *ngIf="product.sale">
+            <span class="sale-price">{{product.price | currency:'USD':true}}</span>
+      <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+      </span>
+      <span *ngIf="!product.sale">
+            <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+      </span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="checkmark" positive></ion-icon>
+      {{product.stock}} in stock
+    </ion-item>
+    <ion-item>
+      <ion-label>Size</ion-label>
+      <ion-select>
+        <ion-option value="S" checked="true">Small</ion-option>
+        <ion-option value="M">Medium</ion-option>
+        <ion-option value="L">Large</ion-option>
+        <ion-option value="XL">Xtra Large</ion-option>
+      </ion-select>
+    </ion-item>
+    <button block accent (click)="addToCart()">Add item to cart</button>
+    <button block clear (click)="cancel()">Cancel</button>
+  </ion-list>
+</ion-content>

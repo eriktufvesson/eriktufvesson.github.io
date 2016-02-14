@@ -1,0 +1,16 @@
+<ion-item (click)="navProduct($event, product)">
+  <ion-avatar item-left>
+    <img [src]="product.imageUrl">
+  </ion-avatar>
+  <h2>{{product.name}}</h2>
+  <p *ngIf="product.sale">
+    <span class="sale-price">{{product.price | currency:'USD':true}}</span>
+    <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+  </p>
+  <p *ngIf="!product.sale">
+    <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+  </p>
+  <ion-note item-right class="sale-price">
+    <span *ngIf="product.sale">{{getDiscount(product)}}%</span>
+  </ion-note>
+</ion-item>

@@ -1,0 +1,13 @@
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>  
+  <ion-buttons end>
+    <navbar-buttons (cartClick)="navCart()" (searchClick)="navSearch()"></navbar-buttons>
+  </ion-buttons>  
+  <ion-title>Popular products</ion-title>
+</ion-navbar>
+
+<ion-content class="grid">
+  <product-grid-item *ngFor="#product of products | filter:'popular':true" [product]="product"></product-grid-item>
+</ion-content>
