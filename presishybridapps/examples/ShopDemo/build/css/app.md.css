@@ -10478,6 +10478,11 @@ body {
   width: 45%;
   margin: 2.5%; }
 
+.product-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+
 .product-description {
   color: #727272;
   font-size: 12px;
