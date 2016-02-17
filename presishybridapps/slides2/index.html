@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Mobilappar i HTML, CSS och JS - Presis Lunch &amp; Learn</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>Mobilappar</h1>
+        <h3>Native, Mobil webb eller Hybrid?</h3>
+        <p><small>Presenterat av <a href="mailto:erik.tufvesson@presis.se">Erik Tufvesson</a>, <a href="http://presis.se">Presis i Lund AB</a></small>
+        </p>
+
+        <aside class="notes">
+          Idag ska vi prata om något jag tycker är jättekul!
+          <br> Ni får gärna avbryta mig om ni undrar något. Det kommer också att finnas tid för frågor på slutet.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Kort om mig</h2>
+        <h3>Erik Tufvesson</h3>
+        <h4>Systemarkitekt och utvecklare på Presis!</h4>
+        <h4 class="orange">Brinner för utveckling av mobilappar!</h4>
+
+        <aside class="notes">
+          Jobbat på Presis sedan januari förra året.
+          <br> Varit föräldraledig under andra halvåret
+          <br> Fördjupat och förälskat mig i apputveckling och framförallt hybridappar.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Vad ska jag prata om idag?</h2>
+        <ul>
+          <li>Mobilappar:
+            <br> Alternativ, skillnader och likheter</li>
+          <li>Vad passar bäst i olika situationer?</li>
+          <li>Demo</li>
+          <li>Framtiden</li>
+        </ul>
+
+        <aside class="notes">
+          1. Vad finns det för alternativ när man ska utveckla en mobilapp?
+          <br> 2. Vilka skillnader och likheter finns det mellan de olika alternativen?
+          <br> 3. Vad passar bäst i olika situationer?
+          <br> 4. Demo
+          <br> 5. Hur ser marknaden för mobilappar ut idag?
+          <br> 6. Vad väntar i framtiden?
+        </aside>
+      </section>
+
+      <section>
+        <h2>Vilka alternativ finns det?</h2>
+        <img class="fragmentx" src="img/alternativ3.png">
+
+        <aside class="notes">
+          Det finns tre huvudalternativ när det gäller att utveckla för mobil.
+          <br> Native, Mobil webb eller Hybrid.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Vad är en Native-app?</h2>
+        <ul class="fragment">
+          <li class="fragmentx highlight-current-bluex">Byggd för en specifik plattform
+            <br>(iOS, Android, Windows Phone)</li>
+          <li class="fragmentx highlight-current-bluex">Full tillgång till mobilens hård- och mjukvara
+            <br> (Kamera, GPS, kontaktlista, säkerhetsgränssnitt, notifieringar, kalender etc.)</li>
+          <li class="fragmentx highlight-current-bluex">Hög prestanda och häftig grafik</li>
+          <li class="fragmentx highlight-current-bluex">Dyr och tidskrävande att utveckla och underhålla</li>
+        </ul>
+
+        <aside class="notes">
+          Byggd för en specifik plattform.
+          <br> Olika utvecklingsmiljöer för olika plattformar.
+          <br> Snyggt paketerad.
+          <br> Distribueras via respektive plattforms marknadsplats. App Store, Google play.
+        </aside>
+
+      </section>
+
+      <section>
+        <h2>Vad innebär Mobil webb?</h2>
+        <ul class="fragment">
+          <li class="fragmentx highlight-current-blue">En mobilanpassad webbsida som visas i mobilens webbläsare</li>
+          <li class="fragmentx highlight-current-blue">Ingen tillgång till mobilens hård- eller mjukvara</li>
+          <li class="fragmentx highlight-current-blue">Låg prestanda</li>
+          <li class="fragmentx highlight-current-blue">Billig att utveckla och enkel att underhålla</li>
+        </ul>
+
+        <aside class="notes">
+          Mobilanpassad webbsida som körs i mobilens webbläsare.
+          <br> Uppbyggd av HTML5-element.
+          <br>Samma kodbas för samtliga plattformar.
+          <br>Användarna surfar till sidan via en webbaddress (URL)
+        </aside>
+
+      </section>
+
+      <section>
+        <h2>Vad är en Hybridapp?</h2>
+        <ul class="fragment">
+          <li class="fragmentx highlight-current-blue">Kombination av HTML- och Native-element</li>
+          <li class="fragmentx highlight-current-blue">Samma kodbas för samtliga plattformar!</li>
+          <li class="fragmentx highlight-current-blue">Snyggt paketerad</li>
+          <li class="fragmenxt highlight-current-blue">Distribueras via App Store/Google play</li>
+          <li class="fragmentx highlight-current-blue">Tillgång till mobilens hård- och mjukvara</li>
+          <li class="fragmentx highlight-current-blue">Bra prestanda</li>
+          <li class="fragmentx highlight-current-blue">Billig att utveckla och enkel att underhålla</li>
+        </ul>
+
+        <aside class="notes">
+          <br> Samma kodbas kan användas för samtliga plattformar
+          <br> Utveckla till både iOS och Android på en gång.
+          <br> Billig att utveckla
+          <br> (Kamera, GPS, kontaktlista, säkerhetsgränssnitt, notifieringar, kalender etc.)
+        </aside>
+
+      </section>
+
+      <section>
+        <h2>Så vad ska man välja?</h2>
+
+        <aside class="notes">
+          Jag kommer att presentera ett antal scenarier och en rekommendation på vilket alternativ som skulle passa bäst för respektive
+          ändamål.
+        </aside>
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Jag vill ha en ashäftig app med cool grafik och superprestanda!"</h3>
+        <h1 class="fragment orange">Native</h1>
+
+        <aside class="notes">
+          Men tänk på att ha en ordenligt tilltagen budget
+        </aside>
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Jag vill göra innehållet på vår webbsida mer tillgängligt på mobilen."</h3>
+        <h1 class="fragment orange">Mobil webb</h1>
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Jag har en cool idé på en mobilapp som jag vill testa snabbt och enkelt!"</h3>
+        <h1 class="fragment orange">Hybrid</h1>
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Vi vill kunna använda vårt affärssystem på mobilen och surfplattan!"</h3>
+        <h1 class="fragment orange">Hybrid</h1>
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Vi har en mobilanpassad webbutik, men våra kunder efterfrågar en app!"</h3>
+        <h1 class="fragment orange">Hybrid</h1>
+
+        <aside class="notes">
+
+        </aside>
+
+      </section>
+
+      <section>
+        <h4>Scenario:</h4>
+        <h3>"Jag vill snabbt och enkelt ta fram en mobilapp som ska fungera till så många användare som möjligt!"</h3>
+        <h1 class="fragment orange">Hybrid</h1>
+
+        <aside class="notes">
+          Hybrid innebär att kunna göra en app och sedan publicera till både iOS och Android.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Måste man välja en och sedan hålla fast vid det valet?</h2>
+        <h1 class="fragment orange">Nej!</h1>
+
+        <aside class="notes">
+          Låt säga att ni börjar med att bygga en hybridapp och varefter projektet utvecklas kanske det märks att en Native-lösning
+          hade passat bättre för en viss platform. Då kan man byta ut delar av projektet mot native, men behålla andra delar
+          som hybrid. T.ex. köra Android-appen som hybrid, men utveckla iOS-appen som native.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Hur fungerar egentligen en Hybridapp?</h2>
+      </section>
+
+      <section>
+        <div style="position: absolute; top: 0; right: 0;">
+          <img src="img/hybrid-app-architecture3.png">
+        </div>
+        <h2 style="text-align: left">Alternativ 1</h2>
+        <ul style="float: left">
+          <li style="text-align: left">WebView (Native container)</li>
+          <li style="text-align: left">HTML, CSS och Javascript</li>
+          <li style="text-align: left">Plugins till native-API:er</li>
+          <li style="text-align: left">Exempel: Cordova, PhoneGap, Ionic, Sencha</li>
+        </ul>
+
+        <aside class="notes">
+          WebView är en inbyggd webbläsare utan adressfält och knappar.
+          <br>För att bygga gränssnittet till appen används HTML, CSS och Javascript. Dvs tekniker som vi som webbutvecklare
+          är experter på.
+          <br>Sedan har vi plugins för att komma åt native-API:er (kamera, gps, kontakter, kalender etc.)
+        </aside>
+      </section>
+
+      <section>
+        <div style="position: absolute; top: 0; right: 0;">
+          <img src="img/hybrid-app-architecture4.png">
+        </div>
+        <h2 style="text-align: left">Alternativ 2</h2>
+        <ul style="float: left">
+          <li style="text-align: left">Native-element</li>
+          <li style="text-align: left">CSS för formattering</li>
+          <li style="text-align: left">Javascript för logik</li>
+          <li style="text-align: left">Direkt åtkomst till native-API:er</li>
+          <li style="text-align: left">Exempel: NativeScript, React Native, Appcelerator</li>
+
+        </ul>
+
+        <aside class="notes">
+          WebView är en inbyggd webbläsare utan adressfält och knappar.
+          <br>För att bygga gränssnittet till appen används HTML, CSS och Javascript. Dvs tekniker som vi som webbutvecklare
+          är experter på.
+          <br>Sedan har vi plugins för att komma åt native-API:er (kamera, gps, kontakter, kalender etc.)
+        </aside>
+      </section>
+
+      <section>
+        <h2>Kan jag konvertera min befintliga mobila webbsida till en hybridapp?</h2>
+        <h1 class="fragment orange">Ja</h1>
+      </section>
+      
+      <section>
+        <h2>Hybrid + Mobil webb = sant</h2>
+        <ol>
+          <li class="fragment">Bygg en hybridapp</li>
+          <li class="fragment">Använd exakt samma kod för din mobila webb</li>
+        </ol>
+        <h1 class="fragment orange">Win!</h1>
+        
+      </section>
+
+      <section>
+        <h2>"Add to HomeScreen"</h2>
+        <p>
+          Lägg till en mobil webbsida som en app på telefonens startskärm.
+        </p>
+        <ul class="fragment">
+          <li>Fungerar till Safari för iOS och Chrome för Android</li>
+          <li>Utvecklaren av webbsidan lägger till en meta-information (manifest-fil/meta-taggar) på sidan</li>
+          <li>Användaren väljer att lägga till appen på sin hemskärm.</li>
+          <li>Appen är nu åtkomlig direkt från enhetens hemskärm</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Demo!</h1>
+
+        <aside class="notes">
+          Syftet med demot är att visa hur en hybridapp kan se ut.
+          <br>Att det inte bara är en mobilanpassad webbsida som är paketerad som en app. Att det blir snyggt. Vi har gjort det
+          för att det är kul. Vi är många här som tycker att detta är kul.
+        </aside>
+      </section>
+
+      <section>
+        <div class="col demo android">
+          Android
+          <br>
+          <iframe id="demo-android" src="http://eriktufvesson.github.io/presishybridapps/examples/ShopDemo/?ionicplatform=android"
+          frameborder="0"></iframe>
+        </div>
+        <div class="col demo ios">
+          iOS
+          <br>
+          <iframe id="demo-ios" src="http://eriktufvesson.github.io/presishybridapps/examples/ShopDemo/?ionicplatform=ios" frameborder="0"></iframe>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vem satsar på hybridappar?</h2>
+        <ul class="fragment">
+          <li>Facebook</li>
+          <li>IBM</li>
+          <li>Ebay</li>
+          <li>Paypal</li>
+        </ul>
+      </section>
+
+      <!--<section>
+                <h2>Hur ser marknaden ut idag?</h2>
+            </section>
+
+            <section>
+                    <h3>Konsumentappar</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Native</td>
+                                    <td>40%</td>
+                                </tr>
+                                <tr>
+                                    <td>Mobil webb</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Hybrid</td>
+                                    <td>40%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                <br>
+                        <h3>Företagsappar</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Native</td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td>Mobil webb</td>
+                                    <td>30%</td>
+                                </tr>
+                                <tr>
+                                    <td>Hybrid</td>
+                                    <td>60%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                <aside class="notes">
+                    Vad är skillnaden mellan konsumentappar och företagsappar? Olika användare har olika krav. Konsumenter fokuserar mer på utseende och effekter. Användare av business-appar fokuserar mer på innehåll och produktivitet.
+                    <br>För konsumentappar har hybridappar kommit upp i samma nivå som native. Tittar vi dock på företagsappar så har hybrid för ett tag sedan sprungit om native och är nu det klart vanligaste.
+                </aside>
+
+            </section>-->
+
+      <section>
+        <h2>Hur ser framtiden för mobilappar ut?</h2>
+      </section>
+
+      <!--<section>
+                <blockquote>"By 2016, More Than 50 Percent of Mobile Apps Deployed Will be Hybrid"</blockquote>
+                <p class="small"><a href="http://www.gartner.com/newsroom/id/2324917" target="_blank">Analysföretaget Gartner, 4 februari 2013</a>
+                </p>
+            </section>-->
+
+      <section>
+        <h2>Områden i fokus</h2>
+        <ul>
+          <li>Cross Platform</li>
+          <li>IoT</li>
+          <li>Rapid Development</li>
+          <li>Enterprise Apps</li>
+        </ul>
+      </section>
+
+      <!--<section>
+                <h3>Utvecklingen av både hård- och mjukvara för mobila enheter går mycket snabbt framåt.</h3>
+
+                <aside class="notes">Google och Apple satsar hårt på att förbättra stödet för Hybridappar. Dessutom finns det en rad företag och organisationer som utvecklar ramverk för utveckling av hybridappar.</aside>
+            </section>
+
+            <section>
+                <h3>Detta innebär:</h3>
+                <h2 class="fragmentx">Det blir mindre och mindre skillnad i prestanda och användarupplevelse mellan Native och Hybrid.</h2>
+            </section>-->
+
+      <!--
+            <section>
+                <h2>React Native</h2>
+                <div class="fragment">
+                    <h4 class="fragment highlight-current-blue">Nästa generation av Hybridappar.</h4>
+                    <h4 class="fragment highlight-current-blue">Projektet drivs av Facebook.</h4>
+                    <h4 class="fragment highlight-current-blue">Javascript/HTML-komponenter kompileras till Native-element.</h4>
+                    <h4 class="fragment highlight-current-blue">Flexibilitet från webbutveckling tillsammans med prestanda från Native.</h4>
+                    <h4 class="fragment highlight-current-blue">Än så länge bra tillgängligt för iOS.</h4>
+                </div>
+                <h3 class="fragment">"Learn once, write anywhere"</h3>
+            </section>
+            -->
+      <!--<section>
+                <h3>Citat från möte mellan representanter från Facebook och Google:</h3>
+                <h2 class="fragmentx orange">"We want the web to win!"</h2>
+                <aside class="notes">I förra veckan träffades representanter för Google (Angular) och Facebook (React) för att diskutera framtiden för mobilutveckling. Kontentan blev att:</aside>
+            </section>-->
+
+      <section>
+        <h2>Intresserad av att utveckla en mobilapp?</h2>
+        <h2 class="fragmentx orange">Kom till oss på Presis!</h2>
+      </section>
+
+      <section>
+        <h1>Frågor?</h1>
+        <br>
+        <br>
+        <br>
+        <h4 class="fragmentx"><a href="mailto:erik.tufvesson@presis.se">erik.tufvesson@presis.se</a></h4>
+      </section>
+
+
+
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            //parallaxBackgroundImage: '/img/presis_bg.png',
+
+            // Optional reveal.js plugins
+            dependencies: [
+                {
+                    src: 'lib/js/classList.js',
+                    condition: function () {
+                        return !document.body.classList;
+                    }
+                },
+                {
+                    src: 'plugin/markdown/marked.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: 'plugin/markdown/markdown.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    condition: function () {
+                        return !!document.querySelector('pre code');
+                    },
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+                {
+                    src: 'plugin/zoom-js/zoom.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                }
+    ]
+        });
+  </script>
+
+</body>
+
+</html>
