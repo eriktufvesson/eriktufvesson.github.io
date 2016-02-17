@@ -1,7 +1,7 @@
 <ion-navbar *navbar primary>
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
-  </button>  
+  </button>
   <ion-buttons end>
     <navbar-buttons (cartClick)="navCart()" (searchClick)="navSearch()"></navbar-buttons>
   </ion-buttons>
@@ -24,5 +24,7 @@
     <span class="title-copy">Popular products</span>
     <button accent class="button button-small button-dark section-action" (click)="navPopular()">More</button>
   </div>
-  <product-grid-item *ngFor="#product of products | filter:'popular':true:4" [product]="product"></product-grid-item>
+  <div class="grid-outer-padding">
+    <product-grid-item *ngFor="#product of products | filter:'popular':true:4; #i = index" [product]="product" [popularity]="i+1"></product-grid-item>
+  </div>
 </ion-content>

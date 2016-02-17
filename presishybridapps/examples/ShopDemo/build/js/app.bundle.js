@@ -3194,7 +3194,7 @@
 	var ionic_1 = __webpack_require__(5);
 	var tabs_1 = __webpack_require__(352);
 	var list_1 = __webpack_require__(354);
-	var grid_1 = __webpack_require__(591);
+	var grid_1 = __webpack_require__(592);
 	var cart_1 = __webpack_require__(363);
 	var cartService_1 = __webpack_require__(356);
 	var products_1 = __webpack_require__(365);
@@ -61584,7 +61584,7 @@
 	var ionic_1 = __webpack_require__(5);
 	var home_1 = __webpack_require__(353);
 	var list_1 = __webpack_require__(354);
-	var grid_1 = __webpack_require__(591);
+	var grid_1 = __webpack_require__(592);
 	/*
 	  Generated class for the TabsPage page.
 	
@@ -61625,13 +61625,13 @@
 	};
 	var ionic_1 = __webpack_require__(5);
 	var list_1 = __webpack_require__(354);
-	var grid_1 = __webpack_require__(591);
+	var grid_1 = __webpack_require__(592);
 	var cart_1 = __webpack_require__(363);
-	var search_1 = __webpack_require__(590);
+	var search_1 = __webpack_require__(591);
 	var navbar_buttons_1 = __webpack_require__(355);
-	var product_grid_item_1 = __webpack_require__(592);
+	var product_grid_item_1 = __webpack_require__(593);
 	var products_1 = __webpack_require__(365);
-	var filter_1 = __webpack_require__(589);
+	var filter_1 = __webpack_require__(590);
 	var HomePage = (function () {
 	    function HomePage(nav, products) {
 	        this.nav = nav;
@@ -61689,10 +61689,10 @@
 	var navbar_buttons_1 = __webpack_require__(355);
 	var product_list_item_1 = __webpack_require__(361);
 	var products_1 = __webpack_require__(365);
-	var filter_1 = __webpack_require__(589);
+	var filter_1 = __webpack_require__(590);
 	var product_1 = __webpack_require__(362);
 	var cart_1 = __webpack_require__(363);
-	var search_1 = __webpack_require__(590);
+	var search_1 = __webpack_require__(591);
 	var ListPage = (function () {
 	    function ListPage(app, nav, navParams, products) {
 	        this.nav = nav;
@@ -62095,18 +62095,49 @@
 	var navbar_buttons_1 = __webpack_require__(355);
 	var cart_1 = __webpack_require__(363);
 	var cart_2 = __webpack_require__(363);
+	var products_1 = __webpack_require__(365);
 	var ProductPage = (function () {
-	    function ProductPage(nav, params) {
+	    function ProductPage(nav, params, productService) {
 	        this.nav = nav;
 	        this.params = params;
+	        this.productService = productService;
 	        this.product = params.get("product");
+	        this.userId = 1;
 	    }
+	    ProductPage.prototype.ngOnInit = function () {
+	        var _this = this;
+	        this.productService.likes(this.product.id).subscribe(function (likes) {
+	            _this.likes = likes;
+	            _this.product.nbrLikes = likes.length;
+	        });
+	        this.productService.comments(this.product.id).subscribe(function (comments) {
+	            _this.comments = comments;
+	            _this.product.nbrComments = comments.length;
+	        });
+	    };
 	    ProductPage.prototype.addToCart = function (product) {
 	        var addToCartModal = ionic_1.Modal.create(cart_1.AddToCartModal, { product: product });
 	        addToCartModal.onDismiss(function (data) {
 	            console.log(data);
 	        });
 	        this.nav.present(addToCartModal);
+	    };
+	    ProductPage.prototype.hasLiked = function (product) {
+	        var _this = this;
+	        if (!this.likes)
+	            return false;
+	        return this.likes.filter(function (like) { return like.userId = _this.userId; }).length;
+	    };
+	    ProductPage.prototype.like = function (product) {
+	        var _this = this;
+	        if (this.hasLiked(product)) {
+	            return;
+	        }
+	        this.productService.addLike(product, this.userId).subscribe(function (like) {
+	            console.log("Product is liked!");
+	            _this.likes.push(like);
+	            product.nbrLikes++;
+	        });
 	    };
 	    ProductPage.prototype.navCart = function () {
 	        this.nav.push(cart_2.CartPage);
@@ -62116,10 +62147,10 @@
 	            templateUrl: 'build/pages/product/product.html',
 	            directives: [navbar_buttons_1.NavbarButtons]
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object, (typeof (_c = typeof products_1.Products !== 'undefined' && products_1.Products) === 'function' && _c) || Object])
 	    ], ProductPage);
 	    return ProductPage;
-	    var _a, _b;
+	    var _a, _b, _c;
 	})();
 	exports.ProductPage = ProductPage;
 
@@ -62310,105 +62341,33 @@
 	var http_1 = __webpack_require__(143);
 	var Observable_1 = __webpack_require__(56);
 	__webpack_require__(366);
-	/*
-	  Generated class for the Products provider.
-	
-	  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-	  for more info on providers and Angular 2 DI.
-	*/
+	var config_1 = __webpack_require__(589);
 	var Products = (function () {
 	    function Products(http) {
 	        this.http = http;
 	        this.products = null;
-	        // this.products = [{
-	        //   id: 1,
-	        //   name: 'Sony headphones',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/1.jpeg',
-	        //   price: 99,
-	        //   stock: 10,
-	        //   sale: true,
-	        //   originalPrice: 199,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 2,
-	        //   name: 'Disc spinner Pro',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/2.jpeg',
-	        //   price: 249,
-	        //   stock: 0,
-	        //   sale: true,
-	        //   originalPrice: 299,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 3,
-	        //   name: '65" LED TV',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/3.jpeg',
-	        //   price: 699,
-	        //   stock: 99,
-	        //   sale: true,
-	        //   originalPrice: 999,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 4,
-	        //   name: 'Vintage laptop',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/4.jpeg',
-	        //   price: 100,
-	        //   stock: 5,
-	        //   sale: false,
-	        //   originalPrice: 100,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 5,
-	        //   name: 'Sony MP3 Player',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/5.jpeg',
-	        //   price: 20,
-	        //   stock: 99,
-	        //   sale: true,
-	        //   originalPrice: 30,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 6,
-	        //   name: 'Mega bass ear-plugs',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/6.jpeg',
-	        //   price: 100,
-	        //   stock: 5,
-	        //   sale: false,
-	        //   originalPrice: 100,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 7,
-	        //   name: 'iPad Air 2',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/7.jpeg',
-	        //   price: 249,
-	        //   stock: 5,
-	        //   sale: false,
-	        //   popular: true
-	        // },
-	        // {
-	        //   id: 8,
-	        //   name: 'iPhone ear-plugs',
-	        //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum dolor vitae sapien dictum, eget efficitur eros molestie. Duis vulputate magna quis nisi feugiat tristique. Aenean quis odio eget ante tristique volutpat et non magna. Donec vitae accumsan sapien. Nam in elementum justo, eu consectetur libero',
-	        //   imageUrl: 'img/sample_images/products/8.jpeg',
-	        //   price: 25,
-	        //   stock: 5,
-	        //   sale: false,
-	        //   popular: true
-	        // }];
 	    }
 	    Products.prototype.all = function () {
-	        return this.http.get('https://shopdemoapi.herokuapp.com/products')
+	        return this.http.get(config_1.API_URL + 'products')
+	            .map(function (res) { return res.json(); })
+	            .catch(this.handleError);
+	    };
+	    Products.prototype.likes = function (productId) {
+	        return this.http.get(config_1.API_URL + 'likes?productId=' + productId)
+	            .map(function (res) { return res.json(); })
+	            .catch(this.handleError);
+	    };
+	    Products.prototype.addLike = function (product, userId) {
+	        var like = { productId: product.id, userId: userId };
+	        var body = JSON.stringify(like);
+	        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+	        var options = new http_1.RequestOptions({ headers: headers });
+	        return this.http.post(config_1.API_URL + 'likes', body, options)
+	            .map(function (res) { return res.json(); })
+	            .catch(this.handleError);
+	    };
+	    Products.prototype.comments = function (productId) {
+	        return this.http.get(config_1.API_URL + 'comments?productId=' + productId)
 	            .map(function (res) { return res.json(); })
 	            .catch(this.handleError);
 	    };
@@ -70998,6 +70957,14 @@
 
 /***/ },
 /* 589 */
+/***/ function(module, exports) {
+
+	exports.API_URL = 'https://shopdemoapi.herokuapp.com/';
+	//export var API_URL = 'http://localhost:3000/'; 
+
+
+/***/ },
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -71048,7 +71015,7 @@
 
 
 /***/ },
-/* 590 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -71116,7 +71083,7 @@
 
 
 /***/ },
-/* 591 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -71130,14 +71097,15 @@
 	};
 	var ionic_1 = __webpack_require__(5);
 	var navbar_buttons_1 = __webpack_require__(355);
-	var product_grid_item_1 = __webpack_require__(592);
+	var product_grid_item_1 = __webpack_require__(593);
 	var products_1 = __webpack_require__(365);
-	var filter_1 = __webpack_require__(589);
+	var filter_1 = __webpack_require__(590);
 	var cart_1 = __webpack_require__(363);
-	var search_1 = __webpack_require__(590);
+	var search_1 = __webpack_require__(591);
 	var GridPage = (function () {
-	    function GridPage(products) {
+	    function GridPage(products, nav) {
 	        this.productService = products;
+	        this.nav = nav;
 	    }
 	    GridPage.prototype.ngOnInit = function () {
 	        var _this = this;
@@ -71155,16 +71123,16 @@
 	            directives: [navbar_buttons_1.NavbarButtons, product_grid_item_1.ProductGridItem],
 	            pipes: [filter_1.Filter]
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof products_1.Products !== 'undefined' && products_1.Products) === 'function' && _a) || Object])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof products_1.Products !== 'undefined' && products_1.Products) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _b) || Object])
 	    ], GridPage);
 	    return GridPage;
-	    var _a;
+	    var _a, _b;
 	})();
 	exports.GridPage = GridPage;
 
 
 /***/ },
-/* 592 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -71196,6 +71164,10 @@
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
 	    ], ProductGridItem.prototype, "product", void 0);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Object)
+	    ], ProductGridItem.prototype, "popularity", void 0);
 	    ProductGridItem = __decorate([
 	        core_1.Component({
 	            selector: 'product-grid-item',

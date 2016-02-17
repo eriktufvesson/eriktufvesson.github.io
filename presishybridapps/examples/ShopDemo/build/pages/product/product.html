@@ -10,20 +10,25 @@
 
 <ion-content class="product">
   <ion-card>
-    <img [src]="product.imageUrl" alt="{{product.name}}">
+    <div class="product-image-container">
+      <button *ngIf="!hasLiked(product)" large clear accent (click)="like(product)">
+        <ion-icon name="heart-outline"></ion-icon>
+      </button>
+      <button *ngIf="hasLiked(product)" large clear accent>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <img [src]="product.imageUrl" alt="{{product.name}}">
+    </div>
     <ion-card-content>
-      <h1>
-        {{product.name}}
-      </h1>
-      <h3>
+      <p>
         {{product.description}}
-      </h3>
+      </p>
       <ion-list>
         <ion-item>
           <ion-icon name="card" primary></ion-icon>
           <span *ngIf="product.sale">
             <span class="sale-price">{{product.price | currency:'USD':true}}</span>
-            <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+          <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
           </span>
           <span *ngIf="!product.sale">
             <span class="normal-price">{{product.price | currency:'USD':true}}</span>
@@ -44,5 +49,18 @@
         Add to cart
       </button>
     </ion-card-content>
+    <ion-item>
+      <button primary clear item-left (click)="like(product)">
+        <ion-icon name="heart"></ion-icon>
+        <div>{{product.nbrLikes}} Likes</div>
+      </button>
+      <button primary clear item-left>
+        <ion-icon name="text"></ion-icon>
+        <div>{{product.nbrComments}} Comments</div>
+      </button>
+      <ion-note item-right>
+        11h ago
+      </ion-note>
+    </ion-item>
   </ion-card>
 </ion-content>

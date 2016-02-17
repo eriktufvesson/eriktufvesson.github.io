@@ -8,7 +8,7 @@
   <ion-title>Sale!</ion-title>
 </ion-navbar>
 
-<ion-content>
+<ion-content class="list">
   <ion-list>
     <product-list-item *ngFor="#product of products | filter:'sale':true" [product]="product"></product-list-item>
   </ion-list>

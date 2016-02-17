@@ -10486,6 +10486,16 @@ body {
 .normal-price {
   color: #212121; }
 
+.grid-outer-padding {
+  padding: 10px; }
+
+product-grid-item .grid-item-container {
+  position: relative; }
+  product-grid-item .grid-item-container ion-badge {
+    position: absolute;
+    left: 5px;
+    top: 5px; }
+
 product-grid-item ion-card {
   position: relative; }
 
@@ -10497,7 +10507,8 @@ product-grid-item ion-card {
   color: #ffffff;
   padding: 4px;
   border-radius: 4px;
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+  z-index: 50; }
 
 ion-menu {
   background-image: url("../../img/menu-bg2.jpg");
@@ -10514,6 +10525,30 @@ ion-menu {
       border: 0 !important; }
       ion-menu ion-content button.item .item-inner {
         border: 0 !important; }
+
+.grid {
+  background-color: #C5CAE9; }
+
+.list-page .sale-price {
+  font-weight: bold;
+  color: red; }
+
+.list-page .original-price {
+  color: #ccc; }
+
+.list {
+  background-color: #C5CAE9; }
+
+.product {
+  background-color: #C5CAE9; }
+  .product .product-image-container {
+    position: relative; }
+    .product .product-image-container button {
+      position: absolute;
+      left: 1px;
+      bottom: 1px; }
+  .product ion-card-content p {
+    margin-bottom: 10px; }
 
 .bar-button {
   box-shadow: none; }
