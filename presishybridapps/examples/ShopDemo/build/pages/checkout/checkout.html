@@ -91,17 +91,17 @@
       <h2 (click)="navProduct(product)">{{product.name}}</h2>
       <ion-note item-right>
         <span *ngIf="product.sale">
-          <span class="sale-price">{{product.price | currency:'USD':true}}</span>
-          <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+          <span class="sale-price">${{product.price}}</span>
+          <span class="original-price">${{product.originalPrice}}</span>
         </span>
         <span *ngIf="!product.sale">
-          <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+          <span class="normal-price">${{product.price}}</span>
         </span>
       </ion-note>
 
     </ion-item>
     <ion-item *ngIf="cartItems.length" style="text-align: right">
-      Subtotal: {{calcTotal() | currency:'USD':true}}
+      Subtotal: ${{calcTotal()}}
     </ion-item>
     <ion-item *ngIf="cartItems.length" style="text-align: right">
       Shipping: $10
@@ -110,7 +110,7 @@
       Tax: $0
     </ion-item>
     <ion-item *ngIf="cartItems.length" style="text-align: right">
-      Total: <b>{{calcTotal() + 10 | currency:'USD':true}}</b>
+      Total: <b>${{calcTotal() + 10}}</b>
     </ion-item>
   </ion-list>
 

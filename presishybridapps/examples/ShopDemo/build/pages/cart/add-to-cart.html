@@ -12,11 +12,11 @@
     <ion-item>
       <ion-icon name="card" primary></ion-icon>
       <span *ngIf="product.sale">
-            <span class="sale-price">{{product.price | currency:'USD':true}}</span>
-      <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+            <span class="sale-price">${{product.price}}</span>
+      <span class="original-price">${{product.originalPrice}}</span>
       </span>
       <span *ngIf="!product.sale">
-            <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+            <span class="normal-price">${{product.price}}</span>
       </span>
     </ion-item>
     <ion-item>

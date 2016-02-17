@@ -13,18 +13,18 @@
       </ion-avatar>
       <h2 (click)="navProduct(product)">{{product.name}}</h2>
       <p *ngIf="product.sale">
-        <span class="sale-price">{{product.price | currency:'USD':true}}</span>
-        <span class="original-price">{{product.originalPrice | currency:'USD':true}}</span>
+        <span class="sale-price">${{product.price}}</span>
+        <span class="original-price">${{product.originalPrice}}</span>
       </p>
       <p *ngIf="!product.sale">
-        <span class="normal-price">{{product.price | currency:'USD':true}}</span>
+        <span class="normal-price">${{product.price}}</span>
       </p>
       <button clear item-right accent (click)="remove(product)">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-item>
     <ion-item *ngIf="cartItems.length" style="text-align: center">
-      Total: <b>{{calcTotal() | currency:'USD':true}}</b>
+      Total: <b>${{calcTotal()}}</b>
     </ion-item>
   </ion-list>
   <ion-card *ngIf="!cartItems.length">
