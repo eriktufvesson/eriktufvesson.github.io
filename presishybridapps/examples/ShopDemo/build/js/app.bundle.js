@@ -62139,6 +62139,13 @@
 	            product.nbrLikes++;
 	        });
 	    };
+	    ProductPage.prototype.openComments = function (product, comments) {
+	        var productCommentsModal = ionic_1.Modal.create(ProductCommentsModal, { product: product, comments: comments });
+	        productCommentsModal.onDismiss(function (data) {
+	            console.log(data);
+	        });
+	        this.nav.present(productCommentsModal);
+	    };
 	    ProductPage.prototype.navCart = function () {
 	        this.nav.push(cart_2.CartPage);
 	    };
@@ -62153,6 +62160,41 @@
 	    var _a, _b, _c;
 	})();
 	exports.ProductPage = ProductPage;
+	var ProductCommentsModal = (function () {
+	    function ProductCommentsModal(viewCtrl, navParams, nav, productService) {
+	        this.viewCtrl = viewCtrl;
+	        this.product = navParams.get('product');
+	        this.comments = navParams.get('comments');
+	        this.nav = nav;
+	        this.productService = productService;
+	        this.commentBody = '';
+	    }
+	    ProductCommentsModal.prototype.addComment = function () {
+	        var _this = this;
+	        if (this.commentBody) {
+	            this.productService.addComment({
+	                userId: 1,
+	                body: this.commentBody,
+	                productId: this.product.id
+	            }).subscribe(function (comment) {
+	                _this.comments.push(comment);
+	                _this.commentBody = '';
+	            });
+	        }
+	    };
+	    ProductCommentsModal.prototype.cancel = function () {
+	        this.viewCtrl.dismiss();
+	    };
+	    ProductCommentsModal = __decorate([
+	        ionic_1.Page({
+	            templateUrl: 'build/pages/product/product-comments.html'
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.ViewController !== 'undefined' && ionic_1.ViewController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object, (typeof (_c = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _c) || Object, (typeof (_d = typeof products_1.Products !== 'undefined' && products_1.Products) === 'function' && _d) || Object])
+	    ], ProductCommentsModal);
+	    return ProductCommentsModal;
+	    var _a, _b, _c, _d;
+	})();
+	exports.ProductCommentsModal = ProductCommentsModal;
 
 
 /***/ },
@@ -62368,6 +62410,14 @@
 	    };
 	    Products.prototype.comments = function (productId) {
 	        return this.http.get(config_1.API_URL + 'comments?productId=' + productId)
+	            .map(function (res) { return res.json(); })
+	            .catch(this.handleError);
+	    };
+	    Products.prototype.addComment = function (comment) {
+	        var body = JSON.stringify(comment);
+	        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+	        var options = new http_1.RequestOptions({ headers: headers });
+	        return this.http.post(config_1.API_URL + 'comments', body, options)
 	            .map(function (res) { return res.json(); })
 	            .catch(this.handleError);
 	    };

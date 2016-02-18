@@ -1,0 +1,28 @@
+<ion-toolbar primary>
+    <ion-title>Comments for {{product.name}}</ion-title>
+    <ion-buttons end>
+        <button (click)="cancel()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-toolbar>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="#comment of comments">
+            <p>Today</p>
+            <h3>{{comment.body}}</h3>
+            <ion-note item-right>John Doe</ion-note>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>
+            Add comment
+        </ion-list-header>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="commentBody" placeholder="Your comment..."></ion-input>
+        </ion-item>
+    </ion-list>
+    <button primary block (click)="addComment()">Add comment</button>
+    <button clear block (click)="cancel()">Close</button>
+</ion-content>

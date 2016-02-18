@@ -54,7 +54,7 @@
         <ion-icon name="heart"></ion-icon>
         <div>{{product.nbrLikes}} Likes</div>
       </button>
-      <button primary clear item-left>
+      <button primary clear item-left (click)="openComments(product, comments)">
         <ion-icon name="text"></ion-icon>
         <div>{{product.nbrComments}} Comments</div>
       </button>
